@@ -4,7 +4,7 @@ export const GET: APIRoute = () => {
   const robotsTxt = `User-agent: *
 Allow: /
 
-Sitemap: https://martingonzalez.dev/sitemap.xml`;
+Sitemap: https://www.martin-gonzalez-miranda.xyz/sitemap.xml`;
 
   return new Response(robotsTxt, {
     headers: {

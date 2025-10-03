@@ -4,20 +4,20 @@ export const GET: APIRoute = () => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://martingonzalez.dev/es/</loc>
+    <loc>https://www.martin-gonzalez-miranda.xyz/es/</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://martingonzalez.dev/en/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://martingonzalez.dev/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.martin-gonzalez-miranda.xyz/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.martin-gonzalez-miranda.xyz/es/"/>
   </url>
   <url>
-    <loc>https://martingonzalez.dev/en/</loc>
+    <loc>https://www.martin-gonzalez-miranda.xyz/en/</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://martingonzalez.dev/en/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://martingonzalez.dev/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.martin-gonzalez-miranda.xyz/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.martin-gonzalez-miranda.xyz/es/"/>
   </url>
 </urlset>`;
 
