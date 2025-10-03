@@ -178,7 +178,7 @@ const specialties = createSpecialtiesData(t, [
 
 <Layout>
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full bg-primary/95 backdrop-blur-md z-50 border-b border-orange-200 dark:border-gray-700">
+  <nav class="fixed top-0 w-full bg-primary/95 backdrop-blur-md z-50 border-b border-orange-200 dark:border-gray-700" style="z-index: 60;">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
@@ -219,22 +219,92 @@ const specialties = createSpecialtiesData(t, [
           </div>
           
           <!-- Theme Toggle Mobile -->
-          <button id="theme-toggle" class="p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-orange-200 dark:border-gray-600 text-orange-600 dark:text-orange-400">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-orange-200 dark:border-gray-600 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-gray-700 transition-colors">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
             </svg>
           </button>
           
           <!-- Mobile Menu Button -->
-          <button id="mobile-menu-button" class="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button id="mobile-menu-button" class="relative p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-orange-200 dark:border-gray-600 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+            <!-- Hamburger Icon -->
+            <svg id="hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <!-- Close Icon (hidden by default) -->
+            <svg id="close-icon" class="w-6 h-6 transition-transform duration-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
         </div>
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden transition-opacity duration-300 md:hidden" style="z-index: 55;"></div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed top-16 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-orange-200 dark:border-gray-700 transform -translate-y-full transition-transform duration-300 ease-in-out hidden md:hidden" style="z-index: 65;">
+    <div class="px-6 py-4 space-y-1">
+      <a href="#about" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          {t('nav.home')}
+        </span>
+      </a>
+      <a href="#specialties" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+          {t('nav.specialties')}
+        </span>
+      </a>
+      <a href="#frontend" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+          {t('nav.frontend')}
+        </span>
+      </a>
+      <a href="#backend" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+          </svg>
+          {t('nav.backend')}
+        </span>
+      </a>
+      <a href="#devops" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+          {t('nav.devops')}
+        </span>
+      </a>
+      <a href="#timeline" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          {t('nav.experience')}
+        </span>
+      </a>
+      <a href="#contact" class="mobile-menu-link block py-3 px-4 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {t('nav.contact')}
+        </span>
+      </a>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section id="about" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
@@ -619,40 +689,106 @@ const specialties = createSpecialtiesData(t, [
   </footer>
 
   <!-- Mobile Menu Script -->
-  <script define:vars={{ navHome: t('nav.home'), navSpecialties: t('nav.specialties'), navFrontend: t('nav.frontend'), navBackend: t('nav.backend'), navDevops: t('nav.devops'), navExperience: t('nav.experience'), navContact: t('nav.contact') }}>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const mobileMenuButton = document.getElementById('mobile-menu-button');
-      if (!mobileMenuButton) return;
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
       
-      const mobileMenu = document.createElement('div');
-      mobileMenu.id = 'mobile-menu';
-      mobileMenu.className = 'hidden md:hidden bg-mobile border-t border-primary dark:border-gray-700';
-      mobileMenu.innerHTML = `
-        <div class="px-4 py-2 space-y-2">
-          <a href="#about" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navHome}</a>
-          <a href="#specialties" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navSpecialties}</a>
-          <a href="#frontend" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navFrontend}</a>
-          <a href="#backend" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navBackend}</a>
-          <a href="#devops" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navDevops}</a>
-          <a href="#timeline" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navExperience}</a>
-          <a href="#contact" class="block py-2 text-secondary hover:text-accent-primary transition-colors">${navContact}</a>
-	</div>
-      `;
-      
-      const parentContainer = mobileMenuButton.parentNode?.parentNode;
-      if (parentContainer) {
-        parentContainer.appendChild(mobileMenu);
+      if (!mobileMenuButton || !mobileMenu || !mobileMenuOverlay || !hamburgerIcon || !closeIcon) return;
+
+      let isMenuOpen = false;
+
+      // Toggle mobile menu
+      function toggleMobileMenu() {
+        isMenuOpen = !isMenuOpen;
+        
+        if (isMenuOpen) {
+          // Open menu
+          mobileMenuOverlay!.classList.remove('hidden');
+          mobileMenu!.classList.remove('hidden');
+          mobileMenu!.classList.remove('-translate-y-full');
+          hamburgerIcon!.classList.add('hidden');
+          closeIcon!.classList.remove('hidden');
+          
+          // Prevent body scroll
+          document.body.style.overflow = 'hidden';
+          
+          // Add animation delay to menu items
+          mobileMenuLinks.forEach((link, index) => {
+            const element = link as HTMLElement;
+            element.style.opacity = '0';
+            element.style.transform = 'translateX(-20px)';
+            setTimeout(() => {
+              element.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+              element.style.opacity = '1';
+              element.style.transform = 'translateX(0)';
+            }, index * 50);
+          });
+        } else {
+          // Close menu
+          closeMobileMenu();
+        }
       }
+
+      // Close mobile menu
+      function closeMobileMenu() {
+        isMenuOpen = false;
+        
+        // Animate menu items out
+        mobileMenuLinks.forEach((link, index) => {
+          const element = link as HTMLElement;
+          element.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+          element.style.opacity = '0';
+          element.style.transform = 'translateX(-20px)';
+        });
+        
+        // Close menu after animation
+        setTimeout(() => {
+          mobileMenuOverlay!.classList.add('hidden');
+          mobileMenu!.classList.add('-translate-y-full');
+          mobileMenu!.classList.add('hidden');
+          hamburgerIcon!.classList.remove('hidden');
+          closeIcon!.classList.add('hidden');
+          
+          // Restore body scroll
+          document.body.style.overflow = '';
+          
+          // Reset menu items for next opening
+          mobileMenuLinks.forEach(link => {
+            const element = link as HTMLElement;
+            element.style.transition = '';
+            element.style.opacity = '';
+            element.style.transform = '';
+          });
+        }, 200);
+      }
+
+      // Event listeners
+      mobileMenuButton.addEventListener('click', toggleMobileMenu);
       
-      mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
+      // Close menu when clicking overlay
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+      
+      // Close menu when clicking on links
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
       });
       
-      // Close mobile menu when clicking on links
-      mobileMenu.addEventListener('click', function(e) {
-        const target = e.target;
-        if (target && target.tagName === 'A') {
-          mobileMenu.classList.add('hidden');
+      // Close menu on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isMenuOpen) {
+          closeMobileMenu();
+        }
+      });
+      
+      // Close menu on window resize to desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768 && isMenuOpen) {
+          closeMobileMenu();
         }
       });
     });
