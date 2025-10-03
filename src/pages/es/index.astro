@@ -40,7 +40,7 @@ const timeline = createTimelineData(t, [
     descriptionKey: 'timeline.cyberpuerta.description',
     achievementKey: 'timeline.cyberpuerta.achievement',
     color: "from-blue-500 to-purple-600",
-    technologies: ["Nuxt.js", "Vue.js", "JavaScript", "Tailwind CSS", "Node.js", "AWS", "Docker"]
+    technologies: ["Nuxt", "Vue", "GCP", "Sentry", "Docker", "Tideways", "Lighthouse"]
   },
   {
     yearKey: 'timeline.medio_melon.year',
@@ -49,7 +49,7 @@ const timeline = createTimelineData(t, [
     descriptionKey: 'timeline.medio_melon.description',
     achievementKey: 'timeline.medio_melon.achievement',
     color: "from-green-500 to-blue-600",
-    technologies: ["React", "Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "AWS", "Docker", "Kubernetes"]
+    technologies: ["React", "Angular", "React Native", "TypeScript", "Node.js", "Express.js", "MongoDB", "AWS", "Docker", "Kubernetes", "MySQL", "Mongo", "Redis", "Elasticsearch", "Spring Boot", "Jenkins", "GitHub Actions"]
   },
   {
     yearKey: 'timeline.capem.year',
@@ -75,6 +75,8 @@ const frontendTech = createTechData([
   { name: "JavaScript", icon: "🟨", description: "ES6+, Async/Await, Modules" },
   { name: "TypeScript", icon: "🔵", description: "Type Safety, Interfaces, Generics" },
   { name: "React", icon: "⚛️", description: "Hooks, Context, Redux" },
+  { name: "React Native", icon: "🟢", description: "Hooks, Context, Redux" },
+  { name: "Angular", icon: "🟢", description: "Components, Services, RxJS" },
   { name: "Vue.js", icon: "💚", description: "Composition API, Pinia, Nuxt" },
   { name: "Angular", icon: "🔴", description: "Components, Services, RxJS" },
   { name: "Next.js", icon: "⚫", description: "SSR, SSG, App Router" },
@@ -100,7 +102,8 @@ const databaseTech = createTechData([
   { name: "PostgreSQL", icon: "🐘", description: "Advanced SQL, JSON, Extensions" },
   { name: "MongoDB", icon: "🍃", description: "NoSQL, Documents, Aggregation" },
   { name: "Redis", icon: "🔴", description: "Caching, Sessions, Pub/Sub" },
-  { name: "Elasticsearch", icon: "🔍", description: "Search, Analytics, Logs" }
+  { name: "Elasticsearch", icon: "🔍", description: "Search, Analytics, Logs" },
+  { name: "Kafka", icon: "⚡", description: "Streaming, Messaging, Event Sourcing" }
 ]);
 
 const backendTech = createBackendTechData([
@@ -133,19 +136,19 @@ const backendTech = createBackendTechData([
     color: "from-purple-500 to-indigo-500"
   },
   {
-    name: "PHP",
-    icon: "🐘",
+    name: "Node.js",
+    icon: "🟢",
     category: "Backend",
-    description: "Laravel, Symfony, CodeIgniter",
-    color: "from-blue-500 to-purple-500"
+    description: "Express, NestJS, Socket.io",
+    color: "from-green-500 to-emerald-500"
   },
   {
-    name: "Rust",
-    icon: "🦀",
+    name: "Elixir",
+    icon: "💜",
     category: "Backend",
-    description: "Actix, Rocket, Tokio",
-    color: "from-red-500 to-orange-500"
-  }
+    description: "Phoenix, Ecto, OTP",
+    color: "from-purple-600 to-pink-500"
+  },
 ]);
 
 const specialties = createSpecialtiesData(t, [
