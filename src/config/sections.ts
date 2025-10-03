@@ -68,11 +68,11 @@ export const sectionConfig = {
 };
 
 export const gridConfig = {
-  frontend: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
-  backend: 'md:grid-cols-2 lg:grid-cols-3',
-  devops: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
-  database: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5',
-  specialties: 'md:grid-cols-2',
-  stats: 'grid-cols-2 lg:grid-cols-4',
-  statsHighlight: 'grid-cols-2 md:grid-cols-4'
+  frontend: 'grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+  backend: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+  devops: 'grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+  database: 'grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5',
+  specialties: 'grid-cols-1 md:grid-cols-2',
+  stats: 'grid-cols-1 xs:grid-cols-2 lg:grid-cols-4',
+  statsHighlight: 'grid-cols-1 xs:grid-cols-2 md:grid-cols-4'
 };

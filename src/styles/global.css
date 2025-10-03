@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Custom breakpoint for extra small screens */
+@media (min-width: 400px) {
+  .xs\:inline {
+    display: inline;
+  }
+  .xs\:hidden {
+    display: none;
+  }
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* CSS Variables for Theme System */
 :root {
   /* Light Theme Colors - Warm & Cozy */
