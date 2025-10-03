@@ -1,0 +1,53 @@
+---
+interface Props {
+  tech: {
+    name: string;
+    icon: string;
+    description: string;
+    color: string;
+    category: string;
+  };
+  index: number;
+  gradientFrom: string;
+  gradientTo: string;
+  hoverBorderFrom: string;
+  hoverBorderTo: string;
+  backgroundFrom: string;
+  backgroundTo: string;
+}
+
+const { tech, index, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, backgroundFrom, backgroundTo } = Astro.props;
+---
+
+<div class="group">
+  <div class={`bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl hover-lift border-2 border-transparent hover:border-${hoverBorderFrom} dark:hover:border-${hoverBorderTo} transition-all duration-500 group-hover:shadow-3xl relative overflow-hidden h-full`}>
+    <!-- Background Pattern -->
+    <div class={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${backgroundFrom} ${backgroundTo} rounded-full -translate-y-12 translate-x-12`}></div>
+    
+    <div class="relative z-10">
+      <div class="flex items-center mb-8">
+        <div class={`w-20 h-20 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-lg mr-6 group-hover:scale-110 transition-transform duration-300`}>
+          {tech.icon}
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold text-primary mb-2">{tech.name}</h3>
+          <span class={`inline-block px-4 py-2 bg-${gradientFrom.split('-')[1]}-100 text-${gradientFrom.split('-')[1]}-700 dark:bg-${gradientFrom.split('-')[1]}-900/30 dark:text-${gradientFrom.split('-')[1]}-300 rounded-full text-sm font-semibold`}>
+            {tech.category}
+          </span>
+        </div>
+      </div>
+      <p class="text-lg text-secondary leading-relaxed">{tech.description}</p>
+      
+      <!-- Skill Level Indicator -->
+      <div class="mt-8">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm font-medium text-secondary">Experiencia</span>
+          <span class="text-sm font-bold text-primary">{90 + index * 2}%</span>
+        </div>
+        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+          <div class={`h-2 rounded-full bg-gradient-to-r ${tech.color} transition-all duration-1000`} style={`width: ${90 + index * 2}%`}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

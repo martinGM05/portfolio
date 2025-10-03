@@ -1,5 +1,11 @@
 ---
 import '../styles/global.css';
+import { useTranslations } from '../i18n/utils';
+import type { languageList } from '../i18n/ui';
+
+const currentLang = Astro.currentLocale || "es";
+
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 
 export interface Props {
 	title?: string;
@@ -8,13 +14,13 @@ export interface Props {
 }
 
 const { 
-	title = "Martín González Miranda - Desarrollador Full Stack",
-	description = "Desarrollador Full Stack especializado en tecnologías modernas. Portfolio personal con proyectos destacados y experiencia en desarrollo web.",
+	title = translateLabels('nav.home'),
+	description = translateLabels('nav.description'),
 	image = "/og-image.jpg"
 } = Astro.props;
 ---
 <!doctype html>
-<html lang="es">
+<html lang={currentLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />

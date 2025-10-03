@@ -1,0 +1,34 @@
+---
+interface Props {
+  tech: {
+    name: string;
+    icon: string;
+    description: string;
+    color?: string;
+    category?: string;
+  };
+  gradientFrom: string;
+  gradientTo: string;
+  hoverBorderFrom: string;
+  hoverBorderTo: string;
+  backgroundFrom: string;
+  backgroundTo: string;
+}
+
+const { tech, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, backgroundFrom, backgroundTo } = Astro.props;
+---
+
+<div class="group">
+  <div class={`bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover-lift border-2 border-transparent hover:border-${hoverBorderFrom} dark:hover:border-${hoverBorderTo} transition-all duration-500 group-hover:shadow-2xl text-center relative overflow-hidden`}>
+    <!-- Background Gradient -->
+    <div class={`absolute inset-0 bg-gradient-to-br ${backgroundFrom} ${backgroundTo} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+    
+    <div class="relative z-10">
+      <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+        {tech.icon}
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-3">{tech.name}</h3>
+      <p class="text-sm text-secondary leading-relaxed">{tech.description}</p>
+    </div>
+  </div>
+</div>
