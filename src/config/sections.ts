@@ -1,57 +1,69 @@
 export const sectionConfig = {
   specialties: {
-    gradientFrom: 'from-pink-500',
-    gradientTo: 'to-purple-600',
-    hoverBorderFrom: 'pink-200',
-    hoverBorderTo: 'purple-800',
-    backgroundFrom: 'from-pink-50',
-    backgroundTo: 'to-purple-50',
-    sectionBg: 'from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20'
+    gradientFrom: 'from-red-500',
+    gradientTo: 'to-orange-600',
+    hoverBorderFrom: 'red-200',
+    hoverBorderTo: 'orange-800',
+    backgroundFrom: 'from-red-50',
+    backgroundTo: 'to-orange-50',
+    backgroundDarkFrom: 'dark:from-red-900/20',
+    backgroundDarkTo: 'dark:to-orange-900/20',
+    sectionBg: 'from-gray-50 via-red-50 to-orange-50 dark:from-gray-900 dark:via-red-900/20 dark:to-orange-900/20'
   },
   frontend: {
-    gradientFrom: 'from-pink-500',
-    gradientTo: 'to-rose-600',
-    hoverBorderFrom: 'pink-200',
-    hoverBorderTo: 'rose-800',
-    backgroundFrom: 'from-pink-50',
-    backgroundTo: 'to-rose-50',
-    sectionBg: 'from-pink-50 via-rose-50 to-red-50 dark:from-gray-900 dark:via-pink-900/20 dark:to-rose-900/20'
+    gradientFrom: 'from-orange-500',
+    gradientTo: 'to-yellow-600',
+    hoverBorderFrom: 'orange-200',
+    hoverBorderTo: 'yellow-800',
+    backgroundFrom: 'from-orange-50',
+    backgroundTo: 'to-yellow-50',
+    backgroundDarkFrom: 'dark:from-orange-900/20',
+    backgroundDarkTo: 'dark:to-yellow-900/20',
+    sectionBg: 'from-gray-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-orange-900/20 dark:to-yellow-900/20'
   },
   backend: {
-    gradientFrom: 'from-emerald-500',
-    gradientTo: 'to-teal-600',
-    hoverBorderFrom: 'emerald-200',
-    hoverBorderTo: 'teal-800',
-    backgroundFrom: 'from-emerald-100',
-    backgroundTo: 'to-teal-100',
-    sectionBg: 'from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20'
+    gradientFrom: 'from-yellow-500',
+    gradientTo: 'to-green-600',
+    hoverBorderFrom: 'yellow-200',
+    hoverBorderTo: 'green-800',
+    backgroundFrom: 'from-yellow-50',
+    backgroundTo: 'to-green-50',
+    backgroundDarkFrom: 'dark:from-yellow-900/20',
+    backgroundDarkTo: 'dark:to-green-900/20',
+    sectionBg: 'from-gray-50 via-yellow-50 to-green-50 dark:from-gray-900 dark:via-yellow-900/20 dark:to-green-900/20'
   },
   devops: {
-    gradientFrom: 'from-orange-500',
-    gradientTo: 'to-amber-600',
-    hoverBorderFrom: 'orange-200',
-    hoverBorderTo: 'amber-800',
-    backgroundFrom: 'from-orange-50',
-    backgroundTo: 'to-amber-50',
-    sectionBg: 'from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-orange-900/20 dark:to-amber-900/20'
+    gradientFrom: 'from-green-500',
+    gradientTo: 'to-teal-600',
+    hoverBorderFrom: 'green-200',
+    hoverBorderTo: 'teal-800',
+    backgroundFrom: 'from-green-50',
+    backgroundTo: 'to-teal-50',
+    backgroundDarkFrom: 'dark:from-green-900/20',
+    backgroundDarkTo: 'dark:to-teal-900/20',
+    sectionBg: 'from-gray-50 via-green-50 to-teal-50 dark:from-gray-900 dark:via-green-900/20 dark:to-teal-900/20'
   },
   database: {
-    gradientFrom: 'from-indigo-500',
+    gradientFrom: 'from-teal-500',
     gradientTo: 'to-blue-600',
-    hoverBorderFrom: 'indigo-200',
+    hoverBorderFrom: 'teal-200',
     hoverBorderTo: 'blue-800',
-    backgroundFrom: 'from-indigo-50',
+    backgroundFrom: 'from-teal-50',
     backgroundTo: 'to-blue-50',
-    sectionBg: 'from-indigo-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-indigo-900/20 dark:to-blue-900/20'
+    backgroundDarkFrom: 'dark:from-teal-900/20',
+    backgroundDarkTo: 'dark:to-blue-900/20',
+    sectionBg: 'from-gray-50 via-teal-50 to-blue-50 dark:from-gray-900 dark:via-teal-900/20 dark:to-blue-900/20'
   },
   timeline: {
-    gradientFrom: 'from-violet-500',
+    gradientFrom: 'from-blue-500',
     gradientTo: 'to-purple-600',
-    hoverBorderFrom: 'violet-200',
+    hoverBorderFrom: 'blue-200',
     hoverBorderTo: 'purple-800',
-    backgroundFrom: 'from-violet-100',
-    backgroundTo: 'to-purple-100',
-    sectionBg: 'from-violet-50 via-purple-50 to-fuchsia-50 dark:from-gray-900 dark:via-violet-900/20 dark:to-purple-900/20'
+    backgroundFrom: 'from-blue-50',
+    backgroundTo: 'to-purple-50',
+    backgroundDarkFrom: 'dark:from-blue-900/20',
+    backgroundDarkTo: 'dark:to-purple-900/20',
+    sectionBg: 'from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20'
   }
 };
 

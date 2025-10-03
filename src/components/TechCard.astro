@@ -13,15 +13,17 @@ interface Props {
   hoverBorderTo: string;
   backgroundFrom: string;
   backgroundTo: string;
+  backgroundDarkFrom: string;
+  backgroundDarkTo: string;
 }
 
-const { tech, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, backgroundFrom, backgroundTo } = Astro.props;
+const { tech, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, backgroundFrom, backgroundTo, backgroundDarkFrom, backgroundDarkTo } = Astro.props;
 ---
 
 <div class="group">
-  <div class={`bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover-lift border-2 border-transparent hover:border-${hoverBorderFrom} dark:hover:border-${hoverBorderTo} transition-all duration-500 group-hover:shadow-2xl text-center relative overflow-hidden`}>
+  <div class={`bg-primary dark:bg-card rounded-2xl p-8 shadow-xl hover-lift border-2 border-transparent hover:border-${hoverBorderFrom} dark:hover:border-${hoverBorderTo} transition-all duration-500 group-hover:shadow-2xl text-center relative overflow-hidden h-full`}>
     <!-- Background Gradient -->
-    <div class={`absolute inset-0 bg-gradient-to-br ${backgroundFrom} ${backgroundTo} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+    <div class={`absolute inset-0 bg-gradient-to-br ${backgroundFrom} ${backgroundTo} ${backgroundDarkFrom} ${backgroundDarkTo} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
     
     <div class="relative z-10">
       <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">

@@ -14,15 +14,18 @@ interface Props {
   hoverBorderTo: string;
   backgroundFrom: string;
   backgroundTo: string;
+  backgroundDarkFrom: string;
+  backgroundDarkTo: string;
+  experienceText: string;
 }
 
-const { tech, index, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, backgroundFrom, backgroundTo } = Astro.props;
+const { tech, index, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, backgroundFrom, backgroundTo, backgroundDarkFrom, backgroundDarkTo, experienceText } = Astro.props;
 ---
 
 <div class="group">
-  <div class={`bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl hover-lift border-2 border-transparent hover:border-${hoverBorderFrom} dark:hover:border-${hoverBorderTo} transition-all duration-500 group-hover:shadow-3xl relative overflow-hidden h-full`}>
+  <div class={`bg-primary dark:bg-card rounded-3xl p-10 shadow-2xl hover-lift border-2 border-transparent hover:border-${hoverBorderFrom} dark:hover:border-${hoverBorderTo} transition-all duration-500 group-hover:shadow-3xl relative overflow-hidden h-full`}>
     <!-- Background Pattern -->
-    <div class={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${backgroundFrom} ${backgroundTo} rounded-full -translate-y-12 translate-x-12`}></div>
+    <div class={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${backgroundFrom} ${backgroundTo} ${backgroundDarkFrom} ${backgroundDarkTo} rounded-full -translate-y-12 translate-x-12`}></div>
     
     <div class="relative z-10">
       <div class="flex items-center mb-8">
@@ -41,10 +44,10 @@ const { tech, index, gradientFrom, gradientTo, hoverBorderFrom, hoverBorderTo, b
       <!-- Skill Level Indicator -->
       <div class="mt-8">
         <div class="flex justify-between items-center mb-2">
-          <span class="text-sm font-medium text-secondary">Experiencia</span>
+          <span class="text-sm font-medium text-secondary">{experienceText}</span>
           <span class="text-sm font-bold text-primary">{90 + index * 2}%</span>
         </div>
-        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+        <div class="w-full bg-progress rounded-full h-2">
           <div class={`h-2 rounded-full bg-gradient-to-r ${tech.color} transition-all duration-1000`} style={`width: ${90 + index * 2}%`}></div>
         </div>
       </div>

@@ -2,24 +2,24 @@
 
 /* CSS Variables for Theme System */
 :root {
-  /* Light Theme Colors - Modern & Vibrant */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --text-primary: #1a202c;
-  --text-secondary: #4a5568;
-  --text-tertiary: #718096;
-  --border-primary: #e2e8f0;
-  --border-secondary: #cbd5e1;
-  --accent-primary: #ff6b6b;
-  --accent-secondary: #4ecdc4;
-  --accent-tertiary: #45b7d1;
-  --gradient-primary: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
-  --gradient-secondary: linear-gradient(135deg, #45b7d1 0%, #96ceb4 100%);
-  --gradient-accent: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
-  --shadow-primary: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-secondary: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Light Theme Colors - Warm & Cozy */
+  --bg-primary: #fefefe;
+  --bg-secondary: #fef7ed;
+  --bg-tertiary: #fed7aa;
+  --text-primary: #1c1917;
+  --text-secondary: #78716c;
+  --text-tertiary: #a8a29e;
+  --border-primary: #fed7aa;
+  --border-secondary: #f59e0b;
+  --accent-primary: #f59e0b;
+  --accent-secondary: #ea580c;
+  --accent-tertiary: #dc2626;
+  --gradient-primary: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  --gradient-secondary: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  --gradient-accent: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  --shadow-primary: 0 1px 3px 0 rgba(251, 146, 60, 0.1), 0 1px 2px 0 rgba(251, 146, 60, 0.06);
+  --shadow-secondary: 0 4px 6px -1px rgba(251, 146, 60, 0.1), 0 2px 4px -1px rgba(251, 146, 60, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(251, 146, 60, 0.1), 0 4px 6px -2px rgba(251, 146, 60, 0.05);
 }
 
 [data-theme="dark"] {
@@ -178,3 +178,107 @@ html {
 .shadow-primary { box-shadow: var(--shadow-primary); }
 .shadow-secondary { box-shadow: var(--shadow-secondary); }
 .shadow-lg-custom { box-shadow: var(--shadow-lg); }
+
+/* Section backgrounds */
+.bg-section { 
+  background-color: #fef7ed; 
+  border-top: 1px solid #fed7aa;
+  border-bottom: 1px solid #fed7aa;
+}
+
+[data-theme="dark"] .bg-section { 
+  background-color: #0f172a; 
+  border-top: 1px solid #334155;
+  border-bottom: 1px solid #334155;
+}
+
+/* Card backgrounds */
+.bg-card { 
+  background-color: #ffffff; 
+  border: 1px solid #fed7aa;
+  box-shadow: 0 4px 6px -1px rgba(251, 146, 60, 0.1), 0 2px 4px -1px rgba(251, 146, 60, 0.06);
+}
+
+[data-theme="dark"] .bg-card { 
+  background-color: #1e293b; 
+  border: 1px solid #334155;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Badge backgrounds */
+.bg-badge { 
+  background-color: #fef3c7; 
+  border: 1px solid #f59e0b;
+  color: #92400e;
+}
+
+[data-theme="dark"] .bg-badge { 
+  background-color: rgba(255, 255, 255, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Button backgrounds */
+.bg-button { 
+  background-color: #fef3c7; 
+  border: 1px solid #f59e0b;
+  color: #92400e;
+}
+
+[data-theme="dark"] .bg-button { 
+  background-color: rgba(255, 255, 255, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Footer backgrounds */
+.bg-footer { 
+  background-color: #0f172a; 
+}
+
+[data-theme="dark"] .bg-footer { 
+  background-color: #1e293b; 
+}
+
+/* Mobile menu backgrounds */
+.bg-mobile { 
+  background-color: var(--bg-primary); 
+}
+
+[data-theme="dark"] .bg-mobile { 
+  background-color: #1e293b; 
+}
+
+/* Technology tag backgrounds */
+.bg-tech-tag { 
+  background-color: #fef3c7; 
+  border: 1px solid #f59e0b;
+  color: #92400e;
+}
+
+[data-theme="dark"] .bg-tech-tag { 
+  background-color: rgba(59, 130, 246, 0.1); 
+  border: 1px solid #3b82f6;
+  color: #93c5fd;
+}
+
+/* Progress bar backgrounds */
+.bg-progress { 
+  background-color: #fed7aa; 
+}
+
+[data-theme="dark"] .bg-progress { 
+  background-color: #374151; 
+}
+
+/* Section separators */
+.section-separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fed7aa, transparent);
+  margin: 0 auto;
+  width: 80%;
+}
+
+[data-theme="dark"] .section-separator {
+  background: linear-gradient(90deg, transparent, #334155, transparent);
+}
