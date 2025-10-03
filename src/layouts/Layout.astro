@@ -1,17 +1,94 @@
 ---
 import '../styles/global.css';
+
+export interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+}
+
+const { 
+	title = "Martín González Miranda - Desarrollador Full Stack",
+	description = "Desarrollador Full Stack especializado en tecnologías modernas. Portfolio personal con proyectos destacados y experiencia en desarrollo web.",
+	image = "/og-image.jpg"
+} = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Martín González Miranda</title>
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="desarrollador full stack, portfolio, proyectos web, JavaScript, React, Node.js, Astro" />
+		<meta name="author" content="Martín González Miranda" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://martingonzalez.dev/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://martingonzalez.dev/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+		
+		<!-- Additional SEO -->
+		<link rel="canonical" href="https://martingonzalez.dev/" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#3b82f6" />
+		
+		<!-- Preload critical resources -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 	</head>
-	<body>
+	<body class="font-inter bg-primary text-primary antialiased" data-theme="light">
 		<slot />
+		
+		<!-- Theme Toggle Script -->
+		<script>
+			// Theme management
+			const themeToggle = document.getElementById('theme-toggle');
+			const html = document.documentElement;
+			
+			// Get saved theme or default to light
+			const savedTheme = localStorage.getItem('theme') || 'light';
+			html.setAttribute('data-theme', savedTheme);
+			
+			// Theme toggle functionality
+			function toggleTheme() {
+				const currentTheme = html.getAttribute('data-theme');
+				const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+				
+				html.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+				
+				// Update toggle button icon
+				const icon = themeToggle?.querySelector('svg');
+				if (icon) {
+					icon.innerHTML = newTheme === 'light' 
+						? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>'
+						: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
+				}
+			}
+			
+			// Add event listener when DOM is loaded
+			document.addEventListener('DOMContentLoaded', function() {
+				const toggle = document.getElementById('theme-toggle');
+				if (toggle) {
+					toggle.addEventListener('click', toggleTheme);
+				}
+			});
+		</script>
 	</body>
 </html>
 

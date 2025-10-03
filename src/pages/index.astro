@@ -1,9 +1,729 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Datos del portfolio - puedes personalizar estos datos
+const personalInfo = {
+  name: "Martín González Miranda",
+  title: "Senior Software Engineer",
+  description: "Transformando ideas en código que funciona. Apasionado por crear experiencias digitales excepcionales y liderar equipos hacia el éxito. Especialista en convertir problemas complejos en soluciones elegantes y escalables.",
+  image: "/profile-photo.jpg",
+  cv: "/MartinGonzalezMiranda_CV.pdf",
+  social: {
+    linkedin: "https://linkedin.com/in/martingonzalezmiranda",
+    github: "https://github.com/martinGM05",
+    email: "mtn.gm05@gmail.com"
+  }
+};
+
+const stats = [
+  { number: "4+", label: "Años de Experiencia", icon: "🚀" },
+  { number: "30%", label: "Mejora en Performance", icon: "⚡" },
+  { number: "25%", label: "Más Rápida Entrega", icon: "🎯" },
+  { number: "15+", label: "Proyectos Exitosos", icon: "✨" }
+];
+
+const timeline = [
+  {
+    year: "2024",
+    company: "Cyberpuerta",
+    role: "Software Engineering",
+    description: "Optimización de e-commerce con Nuxt.js",
+    achievement: "30% mejora en tiempos de carga",
+    color: "from-blue-500 to-purple-600",
+    technologies: ["Nuxt.js", "Vue.js", "JavaScript", "Tailwind CSS", "Node.js", "AWS", "Docker"]
+  },
+  {
+    year: "2022-2024",
+    company: "Medio Melón",
+    role: "Senior Full Stack Developer",
+    description: "Liderazgo de equipos internacionales",
+    achievement: "25% más rápida entrega de proyectos",
+    color: "from-green-500 to-blue-600",
+    technologies: ["React", "Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "AWS", "Docker", "Kubernetes"]
+  },
+  {
+    year: "2024",
+    company: "CAPEM",
+    role: "Front End Developer",
+    description: "Plataforma de RRHH con React",
+    achievement: "Componentes reutilizables con Storybook",
+    color: "from-purple-500 to-pink-600",
+    technologies: ["React", "TypeScript", "Storybook", "SASS", "Jest", "GitHub Actions"]
+  },
+  {
+    year: "2021",
+    company: "Farmatin",
+    role: "Full Stack Developer",
+    description: "Arquitectura MySQL y APIs RESTful",
+    achievement: "PWA con funcionalidad offline",
+    color: "from-orange-500 to-red-600",
+    technologies: ["React", "Node.js", "Express.js", "MySQL", "Redis", "Docker", "Nginx"]
+  }
+];
+
+const frontendTech = [
+  { name: "JavaScript", icon: "🟨", description: "ES6+, Async/Await, Modules" },
+  { name: "TypeScript", icon: "🔵", description: "Type Safety, Interfaces, Generics" },
+  { name: "React", icon: "⚛️", description: "Hooks, Context, Redux" },
+  { name: "Vue.js", icon: "💚", description: "Composition API, Pinia, Nuxt" },
+  { name: "Angular", icon: "🔴", description: "Components, Services, RxJS" },
+  { name: "Next.js", icon: "⚫", description: "SSR, SSG, App Router" },
+  { name: "Nuxt.js", icon: "💚", description: "Universal Apps, Modules" },
+  { name: "Tailwind CSS", icon: "🎨", description: "Utility-first, Responsive" },
+  { name: "SASS", icon: "💅", description: "Variables, Mixins, Functions" }
+];
+
+const devopsTech = [
+  { name: "Docker", icon: "🐳", description: "Containers, Images, Compose" },
+  { name: "Kubernetes", icon: "☸️", description: "Orchestration, Pods, Services" },
+  { name: "AWS", icon: "🟠", description: "EC2, S3, Lambda, RDS" },
+  { name: "Azure", icon: "🔵", description: "App Service, Functions, CosmosDB" },
+  { name: "Google Cloud", icon: "☁️", description: "Compute Engine, Cloud Functions" },
+  { name: "Jenkins", icon: "🔧", description: "CI/CD, Pipelines, Automation" },
+  { name: "GitHub Actions", icon: "⚡", description: "Workflows, Secrets, Deployments" },
+  { name: "Terraform", icon: "🏗️", description: "Infrastructure as Code" },
+  { name: "Nginx", icon: "🌐", description: "Reverse Proxy, Load Balancer" }
+];
+
+const databaseTech = [
+  { name: "MySQL", icon: "🐬", description: "Relational, ACID, Indexing" },
+  { name: "PostgreSQL", icon: "🐘", description: "Advanced SQL, JSON, Extensions" },
+  { name: "MongoDB", icon: "🍃", description: "NoSQL, Documents, Aggregation" },
+  { name: "Redis", icon: "🔴", description: "Caching, Sessions, Pub/Sub" },
+  { name: "Elasticsearch", icon: "🔍", description: "Search, Analytics, Logs" }
+];
+
+const backendTech = [
+  {
+    name: "Java",
+    icon: "☕",
+    category: "Backend",
+    description: "Spring Boot, Spring Security, Maven",
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    name: "Go",
+    icon: "🐹",
+    category: "Backend",
+    description: "Gin, Echo, Gorilla Mux",
+    color: "from-cyan-500 to-blue-500"
+  },
+  {
+    name: "Python",
+    icon: "🐍",
+    category: "Backend",
+    description: "Django, FastAPI, Flask",
+    color: "from-yellow-500 to-orange-500"
+  },
+  {
+    name: "C#",
+    icon: "🔷",
+    category: "Backend",
+    description: ".NET Core, ASP.NET",
+    color: "from-purple-500 to-indigo-500"
+  },
+  {
+    name: "PHP",
+    icon: "🐘",
+    category: "Backend",
+    description: "Laravel, Symfony, CodeIgniter",
+    color: "from-blue-500 to-purple-500"
+  },
+  {
+    name: "Rust",
+    icon: "🦀",
+    category: "Backend",
+    description: "Actix, Rocket, Tokio",
+    color: "from-red-500 to-orange-500"
+  }
+];
+
+const specialties = [
+  {
+    title: "Performance Optimization",
+    description: "Especialista en optimización de rendimiento web",
+    icon: "⚡",
+    color: "bg-gradient-to-r from-yellow-400 to-orange-500"
+  },
+  {
+    title: "Team Leadership",
+    description: "Liderazgo de equipos internacionales",
+    icon: "👥",
+    color: "bg-gradient-to-r from-blue-500 to-purple-600"
+  },
+  {
+    title: "Full Stack Development",
+    description: "Desarrollo completo de aplicaciones web",
+    icon: "🚀",
+    color: "bg-gradient-to-r from-green-500 to-blue-600"
+  },
+  {
+    title: "Cloud Architecture",
+    description: "Arquitecturas escalables en la nube",
+    icon: "☁️",
+    color: "bg-gradient-to-r from-purple-500 to-pink-600"
+  }
+];
 ---
 
 <Layout>
-	<div class="flex flex-col items-center justify-center h-screen">
-		<h1 class="text-4xl font-bold">Hello World</h1>
-	</div>
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-primary/80 backdrop-blur-md z-50 border-b border-primary">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="text-xl font-bold gradient-text">
+          {personalInfo.name.split(' ')[0]}
+        </div>
+        <div class="flex items-center space-x-8">
+                        <div class="hidden md:flex space-x-6">
+                          <a href="#about" class="text-secondary hover:text-accent-primary transition-colors">Inicio</a>
+                          <a href="#specialties" class="text-secondary hover:text-accent-primary transition-colors">Especialidades</a>
+                          <a href="#frontend" class="text-secondary hover:text-accent-primary transition-colors">Frontend</a>
+                          <a href="#backend" class="text-secondary hover:text-accent-primary transition-colors">Backend</a>
+                          <a href="#devops" class="text-secondary hover:text-accent-primary transition-colors">DevOps</a>
+                          <a href="#timeline" class="text-secondary hover:text-accent-primary transition-colors">Experiencia</a>
+                          <a href="#contact" class="text-secondary hover:text-accent-primary transition-colors">Contacto</a>
+                        </div>
+          <button id="theme-toggle" class="theme-toggle p-2 rounded-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </button>
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-secondary hover:text-accent-primary">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="about" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-blue-900/20 dark:to-indigo-900/20"></div>
+    <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse dark:opacity-10"></div>
+    <div class="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse dark:opacity-10"></div>
+    <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse dark:opacity-10"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div class="text-center">
+        <!-- Profile Image -->
+        <div class="mb-12 animate-fade-in-up">
+          <div class="relative inline-block">
+            <div class="w-64 h-64 rounded-full overflow-hidden shadow-2xl ring-4 ring-white dark:ring-slate-800 mx-auto">
+              <img 
+                src={personalInfo.image} 
+                alt={personalInfo.name}
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <!-- Floating Elements -->
+            <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg animate-bounce">
+              🚀
+            </div>
+            <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg animate-bounce" style="animation-delay: 0.5s;">
+              ⚡
+            </div>
+            <div class="absolute top-1/2 -right-8 w-14 h-14 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-lg font-bold shadow-lg animate-bounce" style="animation-delay: 1s;">
+              💻
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="max-w-4xl mx-auto">
+          <div class="mb-6">
+            <span class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full text-lg font-semibold mb-6">
+              👋 ¡Hola! Soy
+            </span>
+          </div>
+          
+          <h1 class="text-6xl lg:text-8xl font-bold text-primary mb-6 leading-tight">
+            <span class="gradient-text">{personalInfo.name.split(' ')[0]}</span>
+          </h1>
+          
+          <h2 class="text-3xl lg:text-4xl text-secondary mb-8 font-light">
+            {personalInfo.title}
+          </h2>
+          
+          <p class="text-xl text-secondary mb-12 leading-relaxed max-w-3xl mx-auto">
+            {personalInfo.description}
+          </p>
+          
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <div class="bg-primary/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift border border-primary">
+                <div class="text-4xl mb-3">{stat.icon}</div>
+                <div class="text-3xl font-bold text-primary mb-1">{stat.number}</div>
+                <div class="text-sm text-secondary">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Social Links & CV -->
+          <div class="flex flex-wrap justify-center gap-6">
+            <a 
+              href={personalInfo.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full hover:from-blue-700 hover:to-blue-800 transition-all hover-lift shadow-lg"
+            >
+              <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+            <a 
+              href={personalInfo.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-full hover:from-slate-900 hover:to-black transition-all hover-lift shadow-lg"
+            >
+              <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+            <a 
+              href={personalInfo.cv}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full hover:from-indigo-700 hover:to-purple-700 transition-all hover-lift shadow-lg"
+            >
+              <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              Descargar CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialties Section -->
+  <section id="specialties" class="py-32 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-24">
+        <div class="inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-lg font-semibold mb-8">
+          ✨ Mis Fortalezas
+        </div>
+        <h2 class="text-6xl lg:text-7xl font-bold text-primary mb-8">
+          Lo que me hace <span class="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">único</span>
+        </h2>
+        <p class="text-2xl text-secondary max-w-4xl mx-auto leading-relaxed">
+          Combinando creatividad, tecnología y liderazgo para crear soluciones excepcionales.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        {specialties.map((specialty, index) => (
+          <div class="group relative">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-2xl hover-lift border-2 border-transparent hover:border-pink-200 dark:hover:border-purple-800 transition-all duration-500 group-hover:shadow-3xl relative overflow-hidden">
+              <!-- Background Pattern -->
+              <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 rounded-full -translate-y-16 translate-x-16"></div>
+              
+              <div class="relative z-10">
+                <div class="flex items-start space-x-6">
+                  <div class={`w-20 h-20 ${specialty.color} rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    {specialty.icon}
+                  </div>
+                  <div class="flex-grow">
+                    <h3 class="text-3xl font-bold text-primary mb-4">{specialty.title}</h3>
+                    <p class="text-lg text-secondary leading-relaxed">{specialty.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Highlight Section -->
+  <section class="py-24 bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-white/20 rounded-full animate-bounce"></div>
+      <div class="absolute top-20 right-20 w-16 h-16 bg-white/20 rounded-full animate-bounce" style="animation-delay: 0.5s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white/20 rounded-full animate-bounce" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-10 right-10 w-24 h-24 bg-white/20 rounded-full animate-bounce" style="animation-delay: 1.5s;"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl lg:text-6xl font-bold text-white mb-4">
+          Números que <span class="text-yellow-300">hablan</span>
+        </h2>
+        <p class="text-xl text-white/90 max-w-3xl mx-auto">
+          Resultados concretos de mi experiencia y dedicación en cada proyecto.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat, index) => (
+          <div class="text-center group">
+            <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 hover-lift">
+              <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+              <div class="text-5xl font-bold text-white mb-3">{stat.number}</div>
+              <div class="text-lg text-white/90 font-medium">{stat.label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Frontend Technologies Section -->
+  <section id="frontend" class="py-32 bg-gradient-to-br from-pink-50 via-rose-50 to-red-50 dark:from-gray-900 dark:via-pink-900/20 dark:to-rose-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-24">
+        <div class="inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-full text-lg font-semibold mb-8">
+          🎨 Frontend
+        </div>
+        <h2 class="text-6xl lg:text-7xl font-bold text-primary mb-8">
+          La <span class="bg-gradient-to-r from-pink-500 to-rose-600 bg-clip-text text-transparent">cara</span> visible
+        </h2>
+        <p class="text-2xl text-secondary max-w-4xl mx-auto leading-relaxed">
+          Tecnologías frontend que uso para crear interfaces modernas, responsivas y atractivas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {frontendTech.map((tech, index) => (
+          <div class="group">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover-lift border-2 border-transparent hover:border-pink-200 dark:hover:border-rose-800 transition-all duration-500 group-hover:shadow-2xl text-center relative overflow-hidden">
+              <!-- Background Gradient -->
+              <div class="absolute inset-0 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/10 dark:to-rose-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div class="relative z-10">
+                <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {tech.icon}
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-3">{tech.name}</h3>
+                <p class="text-sm text-secondary leading-relaxed">{tech.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Backend Technologies Section -->
+  <section id="backend" class="py-32 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-24">
+        <div class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-lg font-semibold mb-8">
+          ⚙️ Backend
+        </div>
+        <h2 class="text-6xl lg:text-7xl font-bold text-primary mb-8">
+          El <span class="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">corazón</span> del sistema
+        </h2>
+        <p class="text-2xl text-secondary max-w-4xl mx-auto leading-relaxed">
+          Lenguajes y frameworks backend que impulsan aplicaciones robustas y escalables.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {backendTech.map((tech, index) => (
+          <div class="group">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl hover-lift border-2 border-transparent hover:border-emerald-200 dark:hover:border-teal-800 transition-all duration-500 group-hover:shadow-3xl relative overflow-hidden h-full">
+              <!-- Background Pattern -->
+              <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-full -translate-y-12 translate-x-12"></div>
+              
+              <div class="relative z-10">
+                <div class="flex items-center mb-8">
+                  <div class={`w-20 h-20 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-lg mr-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {tech.icon}
+                  </div>
+                  <div>
+                    <h3 class="text-3xl font-bold text-primary mb-2">{tech.name}</h3>
+                    <span class="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full text-sm font-semibold">
+                      {tech.category}
+                    </span>
+                  </div>
+                </div>
+                <p class="text-lg text-secondary leading-relaxed">{tech.description}</p>
+                
+                <!-- Skill Level Indicator -->
+                <div class="mt-8">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium text-secondary">Experiencia</span>
+                    <span class="text-sm font-bold text-primary">{90 + index * 2}%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div class={`h-2 rounded-full bg-gradient-to-r ${tech.color} transition-all duration-1000`} style={`width: ${90 + index * 2}%`}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DevOps Technologies Section -->
+  <section id="devops" class="py-32 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-orange-900/20 dark:to-amber-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-24">
+        <div class="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-full text-lg font-semibold mb-8">
+          ⚙️ DevOps & Cloud
+        </div>
+        <h2 class="text-6xl lg:text-7xl font-bold text-primary mb-8">
+          La <span class="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent">infraestructura</span> que impulsa todo
+        </h2>
+        <p class="text-2xl text-secondary max-w-4xl mx-auto leading-relaxed">
+          Herramientas de DevOps y servicios cloud para desplegar, escalar y mantener aplicaciones.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {devopsTech.map((tech, index) => (
+          <div class="group">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover-lift border-2 border-transparent hover:border-orange-200 dark:hover:border-amber-800 transition-all duration-500 group-hover:shadow-2xl text-center relative overflow-hidden">
+              <!-- Background Gradient -->
+              <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/10 dark:to-amber-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div class="relative z-10">
+                <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {tech.icon}
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-3">{tech.name}</h3>
+                <p class="text-sm text-secondary leading-relaxed">{tech.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Database Technologies Section -->
+  <section id="database" class="py-32 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-indigo-900/20 dark:to-blue-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-24">
+        <div class="inline-block px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-600 text-white rounded-full text-lg font-semibold mb-8">
+          🗄️ Bases de Datos
+        </div>
+        <h2 class="text-6xl lg:text-7xl font-bold text-primary mb-8">
+          El <span class="bg-gradient-to-r from-indigo-500 to-blue-600 bg-clip-text text-transparent">almacén</span> de datos
+        </h2>
+        <p class="text-2xl text-secondary max-w-4xl mx-auto leading-relaxed">
+          Sistemas de gestión de datos para almacenar, consultar y analizar información eficientemente.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        {databaseTech.map((tech, index) => (
+          <div class="group">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover-lift border-2 border-transparent hover:border-indigo-200 dark:hover:border-blue-800 transition-all duration-500 group-hover:shadow-2xl text-center relative overflow-hidden">
+              <!-- Background Gradient -->
+              <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/10 dark:to-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div class="relative z-10">
+                <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {tech.icon}
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-3">{tech.name}</h3>
+                <p class="text-sm text-secondary leading-relaxed">{tech.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="py-32 bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50 dark:from-gray-900 dark:via-violet-900/20 dark:to-purple-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-24">
+        <div class="inline-block px-6 py-3 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-full text-lg font-semibold mb-8">
+          🚀 Mi Viaje
+        </div>
+        <h2 class="text-6xl lg:text-7xl font-bold text-primary mb-8">
+          La <span class="bg-gradient-to-r from-violet-500 to-purple-600 bg-clip-text text-transparent">historia</span> de mi crecimiento
+        </h2>
+        <p class="text-2xl text-secondary max-w-4xl mx-auto leading-relaxed">
+          Cada paso ha sido una oportunidad de aprendizaje y crecimiento profesional.
+        </p>
+      </div>
+
+      <div class="space-y-16">
+        {timeline.map((item, index) => (
+          <div class="flex items-center justify-center">
+            <div class="max-w-5xl w-full">
+              <div class="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-2xl hover-lift border-2 border-transparent hover:border-violet-200 dark:hover:border-purple-800 transition-all duration-500 group-hover:shadow-3xl relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-900/20 dark:to-purple-900/20 rounded-full -translate-y-20 translate-x-20"></div>
+                
+                <div class="flex items-start space-x-8 relative z-10">
+                  <!-- Timeline Icon -->
+                  <div class={`w-24 h-24 bg-gradient-to-r ${item.color} rounded-3xl flex items-center justify-center text-white text-3xl font-bold shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                    {index + 1}
+                  </div>
+                  
+                  <!-- Content -->
+                  <div class="flex-grow">
+                    <div class="flex items-center space-x-6 mb-6">
+                      <div class={`px-6 py-3 bg-gradient-to-r ${item.color} text-white rounded-full text-lg font-semibold`}>
+                        {item.year}
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <span class="text-emerald-600 font-semibold text-lg">{item.achievement}</span>
+                      </div>
+                    </div>
+                    
+                    <h3 class="text-4xl font-bold text-primary mb-4">{item.role}</h3>
+                    <h4 class="text-2xl text-violet-600 font-semibold mb-8">{item.company}</h4>
+                    <p class="text-xl text-secondary leading-relaxed mb-8">{item.description}</p>
+                    
+                    <!-- Technologies Used -->
+                    <div class="mb-8">
+                      <h5 class="text-lg font-semibold text-primary mb-4">🛠️ Tecnologías utilizadas:</h5>
+                      <div class="flex flex-wrap gap-3">
+                        {item.technologies.map((tech) => (
+                          <span class="px-4 py-2 bg-gradient-to-r from-violet-100 to-purple-100 dark:from-violet-900/30 dark:to-purple-900/30 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium border border-violet-200 dark:border-violet-800">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-32 bg-gradient-to-r from-rose-400 via-pink-500 to-purple-600 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div class="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
+      <div class="absolute top-40 right-32 w-24 h-24 bg-white/10 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-32 left-1/3 w-28 h-28 bg-white/10 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+      <div class="absolute bottom-20 right-20 w-20 h-20 bg-white/10 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="mb-16">
+        <div class="inline-block px-8 py-4 bg-white/20 backdrop-blur-sm text-white rounded-full text-xl font-semibold mb-8">
+          💬 ¡Hablemos!
+        </div>
+        <h2 class="text-6xl lg:text-8xl font-bold text-white mb-8">
+          ¿Listo para crear algo <span class="text-yellow-300">increíble</span>?
+        </h2>
+        <p class="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12">
+          Estoy siempre emocionado por nuevos proyectos y oportunidades. ¡Trabajemos juntos para hacer realidad tus ideas!
+        </p>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-8 mb-16">
+        <a 
+          href={`mailto:${personalInfo.social.email}`}
+          class="group flex items-center px-12 py-6 bg-white text-pink-600 rounded-full text-xl font-semibold hover:bg-gray-100 transition-all duration-300 hover-lift shadow-2xl"
+        >
+          <svg class="w-8 h-8 mr-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Enviar Email
+        </a>
+        
+        <a 
+          href={personalInfo.social.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center px-12 py-6 bg-white/10 backdrop-blur-sm text-white rounded-full text-xl font-semibold hover:bg-white/20 transition-all duration-300 hover-lift border border-white/20"
+        >
+          <svg class="w-8 h-8 mr-4 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+      
+      <div class="text-white/80 text-lg">
+        <p>✨ Siempre disponible para proyectos emocionantes</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p>&copy; 2024 {personalInfo.name}. Todos los derechos reservados.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href={personalInfo.social.github} target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      if (!mobileMenuButton) return;
+      
+      const mobileMenu = document.createElement('div');
+      mobileMenu.id = 'mobile-menu';
+      mobileMenu.className = 'hidden md:hidden bg-primary border-t border-primary';
+      mobileMenu.innerHTML = `
+        <div class="px-4 py-2 space-y-2">
+          <a href="#about" class="block py-2 text-secondary hover:text-accent-primary transition-colors">Inicio</a>
+          <a href="#specialties" class="block py-2 text-secondary hover:text-accent-primary transition-colors">Especialidades</a>
+          <a href="#frontend" class="block py-2 text-secondary hover:text-accent-primary transition-colors">Frontend</a>
+          <a href="#backend" class="block py-2 text-secondary hover:text-accent-primary transition-colors">Backend</a>
+          <a href="#devops" class="block py-2 text-secondary hover:text-accent-primary transition-colors">DevOps</a>
+          <a href="#timeline" class="block py-2 text-secondary hover:text-accent-primary transition-colors">Experiencia</a>
+          <a href="#contact" class="block py-2 text-secondary hover:text-accent-primary transition-colors">Contacto</a>
+        </div>
+      `;
+      
+      const parentContainer = mobileMenuButton.parentNode?.parentNode;
+      if (parentContainer) {
+        parentContainer.appendChild(mobileMenu);
+      }
+      
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close mobile menu when clicking on links
+      mobileMenu.addEventListener('click', function(e) {
+        const target = e.target as HTMLElement;
+        if (target && target.tagName === 'A') {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+  </script>
 </Layout>
